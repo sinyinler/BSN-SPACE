@@ -21,7 +21,10 @@ import argparse
 
 import torch
 
-from .model import BSINFDenoiser
+try:
+    from .model import BSINFDenoiser
+except ImportError:
+    from model import BSINFDenoiser
 
 
 def check(model, device, image_size=64, num_probes=20, perturb=10.0, channels=1):

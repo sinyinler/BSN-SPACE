@@ -34,11 +34,18 @@ except ImportError:
     def trange(n, **kw):
         return range(n)
 
-from .data import (
-    NormMeta, load_npy, to_chw, normalize, invert_transform,
-    save_npy, save_preview, save_residual, from_chw,
-)
-from .model import BSINFDenoiser, count_parameters
+try:
+    from .data import (
+        NormMeta, load_npy, to_chw, normalize, invert_transform,
+        save_npy, save_preview, save_residual, from_chw,
+    )
+    from .model import BSINFDenoiser, count_parameters
+except ImportError:
+    from data import (
+        NormMeta, load_npy, to_chw, normalize, invert_transform,
+        save_npy, save_preview, save_residual, from_chw,
+    )
+    from model import BSINFDenoiser, count_parameters
 
 
 # ============================================================

@@ -15,12 +15,20 @@ from pathlib import Path
 import numpy as np
 import torch
 
-from .data import (
-    NormMeta, load_npy, to_chw, apply_transform, invert_transform,
-    save_npy, save_preview, save_residual,
-)
-from .model import BSINFDenoiser
-from .train import denoise_full, resolve_device
+try:
+    from .data import (
+        NormMeta, load_npy, to_chw, apply_transform, invert_transform,
+        save_npy, save_preview, save_residual,
+    )
+    from .model import BSINFDenoiser
+    from .train import denoise_full, resolve_device
+except ImportError:
+    from data import (
+        NormMeta, load_npy, to_chw, apply_transform, invert_transform,
+        save_npy, save_preview, save_residual,
+    )
+    from model import BSINFDenoiser
+    from train import denoise_full, resolve_device
 
 
 def load_checkpoint(path, device):
